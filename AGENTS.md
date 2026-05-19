@@ -56,6 +56,7 @@ Phase 1 uses manual or sample inputs only. No external connectors, no browser au
 - **Compartmentalization re-evaluation.** Frontmatter-only context labeling is acceptable for Phase 1 with manual or sample data. Before any real personal, work, or daughter/school data enters the repository, re-evaluate. Future options include physical directory separation per context, encryption-at-rest, `.gitignore` exclusions for sensitive subtrees, or separate private storage outside this repository.
 - **Bootstrap interview.** A later session will run [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) and write durable user context into `context/`.
 - **Later phases.** Connectors (Gmail, Calendar, Jira, Todoist, school portals), hooks, scheduled briefings, and domain-specialist subagents are deferred to later phases.
+- **Canonical-source preference.** When external connectors exist, prefer canonical external systems (Calendar, Todoist, Jira, school portals) as the source of truth for the items they own. Do not duplicate canonical data into repository state. The `state/manual/` directory is a transitional holding bucket for manually-supplied dated, task-like, and date-anchor items while no canonical source is connected; entries superseded by a connector are archived with traceability metadata (which canonical source replaced them, when, and why) per the policy documented in [state/manual/README.md](state/manual/README.md). The bootstrap interview should capture intended canonical sources per item-type and context.
 
 ## Claude Code specifics
 

@@ -24,7 +24,7 @@ Read every file in `rules/`. Read every file in `context/`. If any `context/` fi
 
 ### 2. Read state
 
-Read every file under `state/projects/`, `state/waiting/`, `state/decisions/`, `state/inbox/`. Do not load `state/archive/` by default.
+Read every file under `state/projects/`, `state/waiting/`, `state/decisions/`, `state/inbox/`, and `state/manual/`. Do not load `state/archive/` by default.
 
 ### 3. Read inputs
 
@@ -33,13 +33,20 @@ Read every file under `inputs/`. Determine the unit of processing per file:
 - **Single-item input.** The file describes one item. Its file-level `context:` and other frontmatter apply to that item.
 - **Multi-item input.** The file declares `context: unknown` at the file level and the body lists individually labeled items (each with its own inline context such as `personal`, `work`, `school`, or `household`). In this case, treat each inline-labeled item as a separate input. The file-level `as_of:`, `source:`, and `confidence:` apply to every item unless an item declares its own override.
 
-For each resulting item, decide:
+For each resulting item:
 
-- Does this match an existing state file? Propose an update.
-- Does this create a new obligation? Propose a new state file under the appropriate `state/` subdirectory for its context.
-- Is the item's individual context still unknown or ambiguous? Route to `state/inbox/`.
+1. If it matches an existing state file in any subdirectory, propose an update to that file.
+2. Otherwise, if the item's individual context is unknown or ambiguous, route to `state/inbox/`.
+3. Otherwise, choose the destination by item shape:
+   - Active or dormant multi-step initiative → `state/projects/`
+   - Obligation between the CEO and another party (inbound or outbound) → `state/waiting/`
+   - Open decision requiring CEO judgment → `state/decisions/`
+   - Calendar event, task, or date anchor that fits none of the above → `state/manual/` (see canonical-source rule below)
+4. Do not duplicate the item across subdirectories.
 
-Do not silently delete inputs after processing. Note them in the log, including the per-file unit-of-processing decision.
+**Canonical-source rule for `state/manual/`.** For any item destined for `state/manual/`, set `canonical_source:` to the external system that would own this item once connectors exist (`calendar`, `todoist`, `jira`, `school_portal`, etc.) and `canonical_status:` to `not_connected`, `connector_planned`, or `connected`. If `canonical_status: connected`, do not materialize the item; the connector pass will surface it. If the canonical system is not yet known, set `canonical_source: unknown` and proceed. See [../state/manual/README.md](../state/manual/README.md).
+
+Do not silently delete inputs after processing. Note them in the log, including the per-file unit-of-processing decision and the destination subdirectory for each item.
 
 ### 4. Classify and label
 
@@ -63,16 +70,16 @@ Write to `briefings/YYYY-MM-DD.md` with the following structure:
     # Briefing — YYYY-MM-DD
 
     ## Today
-    - (items with `surface: surface` and `needed_by` within today, labeled by context)
+    - (items with `surface: surface` due or scheduled today, drawn from `state/manual/` (`when:`, `due:`) and other applicable state, labeled by context)
 
     ## This week
-    - (items with `surface: surface` and `needed_by` within seven days, excluding today)
+    - (items with `surface: surface` due or scheduled within seven days, excluding today, drawn from `state/manual/` and other applicable state)
 
     ## Decisions needed
     - (open items from `state/decisions/` with `needed_by` within seven days)
 
     ## Actions needed
-    - (concrete actions the CEO must take; one line each, labeled with context)
+    - (concrete actions the CEO must take, one line each, labeled with context; includes `state/manual/` items with `item_type: task`)
 
     ## Waiting on others
     - (`state/waiting/` with `direction: inbound`, sorted by `expected_by`)
@@ -81,7 +88,7 @@ Write to `briefings/YYYY-MM-DD.md` with the following structure:
     - (`state/waiting/` with `direction: outbound`, sorted by `expected_by`)
 
     ## Approaching dates
-    - (anchors from `context/dates.md` or input data falling within fourteen days)
+    - (anchors from `context/dates.md` and `state/manual/` items with `item_type: calendar_event` or `date_anchor` falling within fourteen days)
 
     ## Stale but important
     - (items not surfaced in N days whose review trigger fires today)
@@ -148,3 +155,9 @@ Do not paste the entire briefing into chat.
 
 - If the auditor reports a boundary violation that cannot be resolved by relabeling, escalate to the CEO and do not finalize the briefing.
 - If `rules/` or `context/` files are missing or have been edited in this session without approval, halt and report.
+
+## Canonical-source preference and migration policy
+
+The `state/manual/` directory is transitional. When external connectors exist for a canonical source listed on a manual item (Calendar, Todoist, Jira, school portals, etc.), the workflow prefers the connector's view and stops creating new manual entries of that type. Supersession of existing manual entries follows the archive-with-traceability policy documented in [../state/manual/README.md](../state/manual/README.md).
+
+Connector mechanics are deferred to a later phase. This workflow defines the preference, not the implementation.
