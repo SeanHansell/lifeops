@@ -1,0 +1,27 @@
+# Secrets and session material — never commit these
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.pfx
+*.cookie
+*.cookies
+cookies.txt
+credentials.json
+token.json
+*.token
+.secrets/
+.cache/
+.private/
+
+# Operating system / editor cruft
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local Claude Code state that should not be shared
+.claude/local/
+.claude/settings.local.json
