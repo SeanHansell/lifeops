@@ -20,11 +20,14 @@ This entrypoint is portable. Operating safely in this repository must not requir
 5. [rules/safe-to-ignore.md](rules/safe-to-ignore.md)
 6. [rules/activity-visibility.md](rules/activity-visibility.md)
 
-## Workflows
+## Workflows and skills
 
-Step-by-step procedures live in [workflows/](workflows/). When asked to run a named workflow, follow its steps in order.
+The daily briefing — the Phase 1 core loop — is defined by the canonical runtime contract at [.claude/skills/daily-briefing/SKILL.md](.claude/skills/daily-briefing/SKILL.md). The prior workflow at `workflows/daily-briefing.md` is superseded and redirects to the skill.
 
-- [workflows/daily-briefing.md](workflows/daily-briefing.md) — the Phase 1 core loop
+Other step-by-step procedures live in [workflows/](workflows/). When asked to run a named workflow, follow its steps in order.
+
+- [.claude/skills/daily-briefing/SKILL.md](.claude/skills/daily-briefing/SKILL.md) — canonical contract for `/briefing` and the daily briefing run (modes, inputs, surfacing, output format, audit, reconciliation, token budget)
+- [workflows/audit-pass.md](workflows/audit-pass.md) — portable auditor role specification, invoked from the daily-briefing skill
 - [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — a specification for a later session. Do not execute it now.
 
 ## Repository conventions

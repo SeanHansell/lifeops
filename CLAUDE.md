@@ -13,9 +13,11 @@ This file is the Claude-specific router. Portable rules and workflows that other
 - [rules/safe-to-ignore.md](rules/safe-to-ignore.md) — anti-noise discipline
 - [rules/activity-visibility.md](rules/activity-visibility.md) — what to log and how to surface it
 
-## Workflows
+## Workflows and skills
 
-- [workflows/daily-briefing.md](workflows/daily-briefing.md) — runs on `/briefing`
+- [.claude/skills/daily-briefing/SKILL.md](.claude/skills/daily-briefing/SKILL.md) — canonical runtime contract for the daily briefing; runs on `/briefing` and on natural triggers like "start my day"
+- [workflows/daily-briefing.md](workflows/daily-briefing.md) — SUPERSEDED; redirects to the skill
+- [workflows/audit-pass.md](workflows/audit-pass.md) — portable auditor role specification; invoked from the daily-briefing skill
 - [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — RESERVED for a future session; do not execute in this session
 
 ## Subagents

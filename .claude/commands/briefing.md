@@ -2,6 +2,8 @@
 description: Generate today's LifeOps daily briefing.
 ---
 
-Run the daily briefing workflow defined in [workflows/daily-briefing.md](../../workflows/daily-briefing.md). Follow every step in order. End by invoking the `auditor` subagent, reconciling its findings, and presenting the concise surface to the Chief Executive Officer (CEO) with a pointer to the full briefing file.
+Route this request through the `daily-briefing` skill at [.claude/skills/daily-briefing/SKILL.md](../skills/daily-briefing/SKILL.md). The skill is the canonical runtime contract — it defines triggers, modes (normal daily, bootstrap, reindex, audit, Monday weekly review), input handling, surfacing rules, section order, output format, audit behavior, reconciliation, token / read budget, and stop conditions.
 
-If `context/` is not yet bootstrapped, do not run the bootstrap interview from this command. Generate the briefing against `state/`, `inputs/`, and `rules/` only, and state explicitly in the surface that context has not been bootstrapped.
+Default to **normal daily mode** (index-first, bounded). Switch to bootstrap, reindex, or audit only on explicit request from the Chief Executive Officer (CEO) or when the skill's stop conditions require it.
+
+End by invoking the `auditor` subagent in fresh context per the skill's normal-mode procedure, reconciling its findings per the skill's reconciliation rules, and presenting the concise CEO chat surface with pointers to the briefing file and the activity log. Do not paste the entire briefing into chat.

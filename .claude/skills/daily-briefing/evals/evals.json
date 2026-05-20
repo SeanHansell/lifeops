@@ -1,0 +1,153 @@
+{
+  "skill_name": "daily-briefing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Start my day",
+      "expected_output": "A normal-mode LifeOps daily briefing across the seven primary operating contexts (MTS Pro Services, Darkstar Technology, Family, Home, School, Parenting, Personal Operations). The briefing file is written to briefings/YYYY-MM-DD.md in the canonical section order. The skill reads compact indexes under state/indexes/ rather than performing a full repository scan. The chat surface is concise — counts plus Decisions / Waiting / Today / Upcoming lines in full.",
+      "assertions": [
+        {
+          "text": "Output briefing includes a 'Today' section",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes a 'Decisions needed' section",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes 'Waiting on me' and 'Waiting on others' sections (or affirmative empty lines)",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes an 'Upcoming' section with at least one anchor whose lead-time ring is open per context/dates.md",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes a 'Triage' section (or affirmative empty line if no triage items)",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes an 'Audit and data quality' section reflecting the auditor pass, not pre-filled by the main thread",
+          "type": "contains_section"
+        },
+        {
+          "text": "Output briefing includes an 'Activity' section reporting run mode, indexes read, source files opened, and approximate token / read budget status",
+          "type": "contains_section"
+        },
+        {
+          "text": "Skill ran in normal daily mode — no announcement of bootstrap, reindex, or audit-only mode in chat, and the activity log records skill_mode: normal-daily",
+          "type": "qualitative"
+        },
+        {
+          "text": "No full repo scan was performed — the activity log enumerates indexes read and skipped source files, and the count of opened source files is meaningfully smaller than the count of files under state/projects/ alone",
+          "type": "qualitative"
+        },
+        {
+          "text": "Output is concise and executive-readable — chat surface is countable; the briefing file is the full detail",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What's on my plate today?",
+      "expected_output": "The skill triggers from natural phrasing (no explicit slash command) and produces a normal daily LifeOps briefing rather than a generic answer.",
+      "assertions": [
+        {
+          "text": "Skill triggers correctly from this phrasing — output is a daily-briefing run, not a freeform chat response",
+          "type": "qualitative"
+        },
+        {
+          "text": "A briefings/YYYY-MM-DD.md file is written (or updated if already exists for today)",
+          "type": "qualitative"
+        },
+        {
+          "text": "All canonical action sections are present (Today, Decisions needed, Waiting on me, Waiting on others, Upcoming, Triage, Approvals queue) with empty sections omitted only when absence is not meaningful",
+          "type": "contains_section"
+        },
+        {
+          "text": "The chat surface includes the Decisions / Waiting / Today / Upcoming lines in full and a pointer to the briefing file",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Daily briefing with audit",
+      "expected_output": "Normal daily mode runs and produces the briefing. The auditor subagent is invoked in fresh context against the briefing and log. The audit pass is lightweight — it reads only the cited sources and indexes, not the entire repository — and its findings are reconciled into the briefing's Audit and data quality section.",
+      "assertions": [
+        {
+          "text": "The auditor subagent is invoked in fresh context per .claude/agents/auditor.md, with the briefing path, log path, and cited-paths list provided as inputs",
+          "type": "qualitative"
+        },
+        {
+          "text": "The audit pass does not regenerate the briefing or rerun normal-mode source-discovery — it reads only the cited sources plus the briefing and log",
+          "type": "qualitative"
+        },
+        {
+          "text": "Audit and data quality section in the briefing reflects the auditor's actual findings (verdict, blocker count, warning count, highest severity, audit log path), not pre-filled content",
+          "type": "contains_section"
+        },
+        {
+          "text": "If the auditor returns a 'block' verdict, the skill stops and surfaces the blocker rather than auto-regenerating",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Rebuild the briefing indexes",
+      "expected_output": "Skill switches to bootstrap/rebuild or reindex mode (depending on whether any indexes exist). Announces the mode in chat. Performs the full canonical scan (bootstrap) or per-category refresh (reindex). Writes the index files under state/indexes/ and a bootstrap or reindex log under logs/. Does not produce a daily briefing as a side effect unless the CEO explicitly asks for both.",
+      "assertions": [
+        {
+          "text": "Skill announces the mode in chat — either 'Running in bootstrap/rebuild mode — full canonical scan. Token budget exceeded by design.' or 'Running in reindex mode — refreshing <list of indexes>.'",
+          "type": "qualitative"
+        },
+        {
+          "text": "All canonical index files exist under state/indexes/ after the run (briefing-contract.md, dates.md, waiting.md, decisions.md, approvals.md, briefing-surface.md, projects.md, triage.md)",
+          "type": "qualitative"
+        },
+        {
+          "text": "A bootstrap or reindex log is written under logs/<date>-briefing-bootstrap.md or logs/<date>-briefing-reindex.md with skill_mode set accordingly",
+          "type": "qualitative"
+        },
+        {
+          "text": "No briefings/YYYY-MM-DD.md is produced unless the CEO explicitly asked for both; instead the skill prompts the CEO to confirm before running normal daily mode against the new indexes",
+          "type": "qualitative"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Monday weekly review",
+      "expected_output": "The Monday weekly review only runs when explicitly invoked or when today is Monday and the CEO explicitly confirms the deep pass. It is never triggered as a side effect of normal daily mode, even on Monday. The extended scan reads all of state/projects/, runs a confirmation pass on inferred-active items, sweeps triage ages, and produces an 'Approaching this week' rollup. Token budget for normal daily mode is not exceeded by the daily run.",
+      "assertions": [
+        {
+          "text": "Normal daily mode invoked on a Monday with no explicit weekly-review request does NOT run the deep pass — it remains index-first and bounded",
+          "type": "qualitative"
+        },
+        {
+          "text": "When the CEO says 'Monday weekly review' (or 'weekly LifeOps review' / 'run the deep pass'), the skill announces 'Running Monday weekly review — extended scan.' in chat and reads beyond the eight required indexes",
+          "type": "qualitative"
+        },
+        {
+          "text": "The weekly review surfaces a confirmation pass over any confidence: inferred items in the project shelf (e.g., the MTS inferred-active backlog), proposing promotion to confirmed or demotion to dormant",
+          "type": "qualitative"
+        },
+        {
+          "text": "The weekly review sweeps state/indexes/triage.md for items with triage_age_days greater than seven and flags them in the Triage section of the briefing",
+          "type": "qualitative"
+        },
+        {
+          "text": "The Activity section records skill_mode: monday-weekly-review and declares the extended-scan budget exception",
+          "type": "contains_section"
+        }
+      ],
+      "files": []
+    }
+  ]
+}

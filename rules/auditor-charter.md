@@ -102,27 +102,22 @@ The auditor flags conflicts and proposes resolutions. It does not silently rewri
 
 ## Reporting
 
-Daily briefing Audit section:
+The briefing surfaces audit results in the **Audit and data quality** section, which also carries data-quality findings. Canonical format is defined by [.claude/skills/daily-briefing/SKILL.md](../.claude/skills/daily-briefing/SKILL.md); the auditor produces content that conforms to that format.
 
-- Counts in the main briefing
-- One-line summary per medium or high-severity finding
-- Full audit report written to `logs/`
-- Log file path or report identifier available for drill-down
+The auditor's own report (returned by the subagent) keeps its existing Critical / Warnings / Notes / Verdict structure per `workflows/audit-pass.md`. The main thread reconciles the auditor's report into the briefing's Audit and data quality section.
 
-Preferred format:
+Briefing Audit and data quality section — required content:
 
-    Audit:
-    - 0 blockers
-    - 2 warnings
-    - 1 stale-source item
-    - Highest severity: warning
-    - See audit log: <log-id or path>
+- Verdict (`pass | pass-with-warnings | block`), blocker count, warning count, highest severity, and audit log path.
+- One bullet per medium or high-severity finding using the canonical surfaced-item format:
 
-For blockers:
+      - **Human-readable title** — Short explanation.
+        - Type: <Audit warning | Data quality issue>
+        - Action: <one-line>
+        - Source: `path/to/source.md` (or "auditor" / "main thread")
 
-    Audit:
-    - BLOCKED: briefing not clean
-    - Reason: <one-line reason>
-    - Required action: <triage / source confirmation / approval correction / context correction>
+- Data-quality findings (mismatches, stale values, missing or weak sources, freshness gaps) also appear here under `Type: Data quality issue`. They do **not** appear under Cross-domain conflicts and stacked dates, which is reserved for real-world planning collisions.
 
-Unresolved prior audit findings reappear in the briefing until acknowledged, fixed, expired, or explicitly marked known-OK. They do not dominate the briefing unless they block action or affect today; otherwise they appear as counts with drill-down.
+For blockers, the section opens with the verdict line `Verdict: block` and includes a `Required action:` metadata line on the blocking finding (e.g., `triage`, `source confirmation`, `approval correction`, `context correction`).
+
+Unresolved prior audit findings reappear in the briefing until acknowledged, fixed, expired, or explicitly marked known-OK. They do not dominate the briefing unless they block action or affect today; otherwise they appear as counts with drill-down to the audit log.

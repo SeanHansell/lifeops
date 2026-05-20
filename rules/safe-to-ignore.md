@@ -53,7 +53,7 @@ Suppress aggressively unless a documented trigger fires:
 
 The default briefing:
 
-- Surfaces items in `surface` state in the priority sections defined by [workflows/daily-briefing.md](../workflows/daily-briefing.md).
+- Surfaces items in `surface` state in the priority sections defined by [.claude/skills/daily-briefing/SKILL.md](../.claude/skills/daily-briefing/SKILL.md).
 - Shows `triage` items in a dedicated Triage section (not mixed with normal obligations).
 - Collapses `defer` and `suppress` items into counts at the bottom, with a single line per category.
 

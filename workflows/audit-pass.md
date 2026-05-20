@@ -1,7 +1,7 @@
 ---
 type: workflow
 name: audit-pass
-invoked_by: workflows/daily-briefing.md step 7
+invoked_by: .claude/skills/daily-briefing/SKILL.md (normal-daily step 9, audit mode step 4)
 ---
 
 # Audit Pass — Independent Review
