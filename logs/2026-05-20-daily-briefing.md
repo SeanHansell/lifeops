@@ -143,3 +143,69 @@ Final persistent outputs:
 
 - `briefings/2026-05-20.md` (reconciled)
 - `logs/2026-05-20-daily-briefing.md` (this file, including auditor report and reconciliation)
+
+## Post-briefing CEO decisions (2026-05-20)
+
+After the briefing was published and the auditor pass was reconciled, the CEO returned a batch of decisions and corrections against the briefing's open items. Each is recorded here with the action taken.
+
+### Approvals granted
+
+- **Phase roadmap approved.** `proposals/2026-05-19-phase-roadmap.md` adopted as the working plan for LifeOps progression. The numeric inaccuracy ("twenty-one project files were seeded" → "twenty") was corrected in the same revision. Frontmatter updated with `status: approved`, `approved_on: 2026-05-20`, `approved_by: Chief Executive Officer (CEO)`. Approval section added at the top of the proposal body.
+
+### Inferred-active confirmation backlog cleared
+
+CEO direction: "All projects listed are active." Applied to all five MTS Pro Services (MTS) projects previously carrying `confidence: inferred` plus the two non-MTS triage items (Home Assistant; Project eFed):
+
+- `state/projects/holy-see-mission-it-stabilization.md` — `confidence: inferred → confirmed`; `surface: defer → surface`; `surface_triggers` removed; `NEEDS DECISION` label removed; `as_of: 2026-05-20`; source line updated.
+- `state/projects/holy-see-mission-talos-onboarding.md` — same set of changes.
+- `state/projects/psp-okta-app-integration.md` — same.
+- `state/projects/managed-apple-account-deployment-program.md` — same.
+- `state/projects/talos-fleet-management-platform-reliability.md` — `confidence: inferred → confirmed`; `surface: triage → surface`; `triage_question` and `resolution_path` removed; `TRIAGE` label removed. The "strategic-risk vs. engineering backlog" triage framing was removed at the CEO's direction (see below). Next-action and Notes sections rewritten to reflect a routine active MTS project.
+- `state/projects/home-assistant-smart-home-architecture.md` — `confidence: assumed → confirmed`; `status: triage → active`; `surface: triage → surface`; `triage_question` and `resolution_path` removed; `TRIAGE` label removed. Open question retained: which candidate next action is the current focus.
+- `state/projects/project-efed-platform.md` — `confidence: assumed → confirmed`; `status: triage → active`; `surface: triage → surface`; `triage_question` and `resolution_path` removed; `TRIAGE` label removed. Open question retained: name the next concrete development milestone.
+
+### Talos framing correction
+
+CEO direction: "Why is it being surfaced as a risk?" The Talos triage_question I inherited from the project file ("Surface to LifeOps as a strategic-risk stream or keep as engineering backlog?") framed the project as a risk stream. The CEO clarified that Talos is a routine active MTS project — revenue-critical, but operationally active like any other. The triage framing has been removed entirely; the file body now states the routine-active classification and notes the CEO's clarification.
+
+### Family event reclassification
+
+CEO direction: "My parent's anniversary since my Dad's passing is no longer a holiday celebration, more of a memorial. Concert will be the active item. New York trip is the travel container for both events."
+
+Applied:
+
+- `context/dates.md` — `as_of: 2026-05-19 → 2026-05-20`. Source line updated to record CEO direction on 2026-05-20.
+  - Recurring personal dates: row for `1972-06-24 Diane & Bob (Bob deceased) wedding anniversary` relabeled `Wedding anniversary (memorial)`. Notes column updated to reflect the memorial reclassification and the 7-day awareness + day-of lead-time per the existing "Memorial date" defaults.
+  - One-time future anchors: 2026-06-24 row for the 54th wedding anniversary relabeled `(memorial)` and the Notes column states it is not the active anchor for 2026-06-24. The same-date Evanescence concert row's Notes column updated to identify it as the active anchor and to point at the NY trip as travel container.
+- `state/projects/evanescence-seane-first-concert.md` — body rewritten to state the CEO designated this as the active item anchoring 2026-06-24. `travel_container: summer-2026-ny-trip` added to frontmatter. `location: TBD — pending location-tracking schema` added.
+- `state/projects/summer-2026-ny-trip.md` — body rewritten to identify the trip as the travel container for both Diane's 80th birthday and the Evanescence concert. `travel_container_for:` list added to frontmatter. `location: New York (NY); specific venues TBD` added. The memorial anchor (Diane & Bob anniversary) added to the Known anchors list so the trip-window planning is aware of it.
+
+### Data-model gap surfaced
+
+CEO observation: "It occurs to me we're not tracking location of these things, so you're missing that context."
+
+This is a real schema gap. Drafted `proposals/2026-05-20-location-tracking-schema.md` (Tier 4) proposing an optional `location:` / `locations:` / `travel_container:` field convention across state files, the dates context, and proposals. The proposal does not require an active CEO decision today — it documents the gap and the migration approach for the next briefing run to surface.
+
+The seven Family / Home anchors most affected by the 2026-05-20 reclassifications are listed in the proposal's "Initial values to capture" section as items that need CEO-supplied location values when convenient.
+
+### Tier-tracking and risk summary
+
+All edits in this batch are Tier 4 (repo-internal). The CEO's batch message constituted explicit direction for the `context/dates.md` edit (a protected file under [rules/approval-gates.md](../rules/approval-gates.md)) and the per-project state edits. No external action was taken. No Tier 0 / 1 / 2 / 3 action was proposed or executed.
+
+### Files changed in this batch
+
+- `proposals/2026-05-19-phase-roadmap.md` — approved + typo fix
+- `proposals/2026-05-20-location-tracking-schema.md` — created
+- `state/projects/holy-see-mission-it-stabilization.md`
+- `state/projects/holy-see-mission-talos-onboarding.md`
+- `state/projects/psp-okta-app-integration.md`
+- `state/projects/managed-apple-account-deployment-program.md`
+- `state/projects/talos-fleet-management-platform-reliability.md`
+- `state/projects/home-assistant-smart-home-architecture.md`
+- `state/projects/project-efed-platform.md`
+- `state/projects/evanescence-seane-first-concert.md`
+- `state/projects/summer-2026-ny-trip.md`
+- `context/dates.md`
+- `logs/2026-05-20-daily-briefing.md` (this section)
+
+Reindex of `state/indexes/` (once the bootstrap pass creates them) will need to pick up all of the above on the next briefing run.

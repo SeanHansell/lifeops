@@ -2,8 +2,8 @@
 type: context
 name: dates
 context: personal
-source: bootstrap-interview
-as_of: 2026-05-19
+source: bootstrap-interview; CEO direction 2026-05-20 (memorial reclassification)
+as_of: 2026-05-20
 confidence: confirmed
 ---
 
@@ -37,7 +37,7 @@ confidence: confirmed
 | Birthday | 1981-08-02 | Brett Bastiansen | Family | |
 | Birthday | 1987-03-11 | Jason Mills | Family | |
 | Work anniversary | 2007-03-19 | Sean / MTS | MTS Pro Services | |
-| Wedding anniversary | 1972-06-24 | Diane & Bob (Bob deceased) | Family | Day-of only |
+| Wedding anniversary (memorial) | 1972-06-24 | Diane & Bob (Bob deceased) | Family | Reclassified 2026-05-20 from holiday celebration to memorial; memorial lead-time per "Memorial date" defaults (7-day awareness + day-of). Do not frame as action unless attached. |
 | Birthday | 1949-05-14 | Irene Puswald (deceased) | Family | Day-of only |
 | Birthday | 1940-10-05 | Frank Puswald (deceased) | Family | Day-of only |
 | Birthday | 1981-10-31 | John Puswald | Family | |
@@ -95,8 +95,8 @@ Source: HIDOE 2026-2027 Official School Calendar, approved 2023-06-01, amended 2
 | 2026-06-09 to 2026-06-29 | New York trip window | Family | Travel |
 | 2026-06-13 5pm ET / 12pm HST | Reunion (name TBD) | Family | NEEDS DECISION |
 | 2026-06-15 | Diane "Mom" 80th birthday | Family | Travel |
-| 2026-06-24 | Diane & Bob 54th wedding anniversary | Family | Day-of only (Bob deceased) |
-| 2026-06-24 | Evanescence concert — Seane's first concert | Family | Parenting + Travel |
+| 2026-06-24 | Diane & Bob 54th wedding anniversary (memorial) | Family | Memorial framing per 2026-05-20 CEO direction; 7-day awareness + day-of. Not the active anchor for 2026-06-24. |
+| 2026-06-24 | Evanescence concert — Seane's first concert | Family | Parenting + Travel. Active anchor for 2026-06-24 per 2026-05-20 CEO direction. Travel container: `state/projects/summer-2026-ny-trip.md`. |
 | TBD | Jessie/Brian NY visit | Family | NEEDS SOURCE |
 | TBD | Riverhead Aquarium | Family | NEEDS SOURCE |
 

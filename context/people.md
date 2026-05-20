@@ -11,28 +11,28 @@ confidence: confirmed
 
 ## Family (individuals)
 
-### Maria Hansell née Puswald ("Bunny")
+### Maria Hansell ("Maria")
 - Relationship: Wife
 - Primary context: Family
 - Channel: iMessage and in-person
 - Accounts: `maria@morelen.net`
-- Notes: Future emergency/survivorship access person. May be modeled as collaborator, owner, waiting-on, target, or invitee — never an identity the Chief Operating Officer (COO) operates.
+- Notes: Future emergency/survivorship access person. May be modeled as collaborator, owner, waiting-on, target, or invitee — never an identity the COO operates.
 
-### Seane Irene Hansell ("Seane", "Seaney"; common mispronunciation "Shawnee")
+### Seane Irene Hansell ("Seane", "Seaney")
 - Relationship: Daughter, minor
 - Primary context: Family
 - Related contexts: Parenting, School
 - Channel: iMessage and in-person; parent comms via parent identity `sean@morelen.net`
 - Notes: Spelled "Seane", pronounced same as "Sean". COO must never act as Seane. School account `3712000032@k12.hi.us` access does not imply permission to represent her identity.
 
-### Diane Hansell ("Mom")
+### Diane Hansell née Elliott ("Diane", "Mom")
 - Relationship: Sean's adoptive mother; Seane's grandmother
 - Primary context: Family
 - Location: Valley Stream, New York
 - Channel: TBD
 - Notes: Relevant for family travel, birthday planning, visits, family logistics. 80th birthday 2026-06-15.
 
-### Brian Magh and Jessica "Jessie" Magh née Tagney
+### Brian Magh and Jessica "Jessie" Magh née Tangney
 - Relationship: Seane's godparents; family friends
 - Primary context: Family
 - Channel: iMessage

@@ -2,15 +2,11 @@
 type: project
 slug: managed-apple-account-deployment-program
 context: MTS Pro Services
-source: bootstrap-interview + Jira project space inspection 2026-05-19
-as_of: 2026-05-19
-confidence: inferred
+source: bootstrap-interview + Jira project space inspection 2026-05-19; CEO confirmation 2026-05-20
+as_of: 2026-05-20
+confidence: confirmed
 status: active
-surface: defer
-surface_triggers:
-  - Chief Executive Officer (CEO) confirmation as active
-labels:
-  - NEEDS DECISION
+surface: surface
 jira_spaces:
   - PSP
   - MAID
@@ -24,7 +20,7 @@ Managed Apple Account deployments across MTS Pro Services (MTS) and customer env
 
 ## Status
 
-Mixed: active in PSP/PHS, stale or unclear in older MAID customer epics.
+Active. Mixed surface across lanes: active in PSP/PHS, stale or unclear in older MAID customer epics.
 
 ## Next action
 

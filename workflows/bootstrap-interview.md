@@ -12,7 +12,7 @@ output_artifacts:
 
 # Bootstrap Interview — Specification
 
-This file defines what a later session must do to populate `context/`. **Do not run this interview in the current session.** Treat this file as a design contract.
+This file defines what a session must do to populate `context/`. The interview was executed on 2026-05-19; `context/` is bootstrapped. **Do not re-run this interview unless the Chief Executive Officer (CEO) explicitly requests it** (e.g., to add a new domain or after a major life change). Treat this file as a design contract for future re-runs.
 
 ## Purpose
 

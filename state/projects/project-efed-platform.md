@@ -2,18 +2,11 @@
 type: project
 slug: project-efed-platform
 context: Personal Operations
-source: bootstrap-interview
-as_of: 2026-05-19
-confidence: assumed
-status: triage
-surface: triage
-triage_question: Confirm current development activity.
-resolution_path:
-  - surface
-  - defer
-  - suppress
-labels:
-  - TRIAGE
+source: bootstrap-interview; CEO confirmation 2026-05-20
+as_of: 2026-05-20
+confidence: confirmed
+status: active
+surface: surface
 ---
 
 # Project eFed Platform
@@ -24,8 +17,8 @@ Build the archive-first e-federation platform and related application / domain m
 
 ## Status
 
-Unclear whether active or dormant. Prior detailed design and implementation discussion exists.
+Active. The Chief Executive Officer (CEO) confirmed active status on 2026-05-20. A concrete next action still needs to be named.
 
-## Resolution path
+## Open questions
 
-Promote to `surface` with a concrete next action, to `defer` with documented surface trigger, or to `suppress` if not in current scope.
+- What is the next concrete development milestone?

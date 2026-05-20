@@ -2,18 +2,11 @@
 type: project
 slug: talos-fleet-management-platform-reliability
 context: MTS Pro Services
-source: bootstrap-interview + Jira project space inspection 2026-05-19
-as_of: 2026-05-19
-confidence: inferred
+source: bootstrap-interview + Jira project space inspection 2026-05-19; CEO confirmation 2026-05-20
+as_of: 2026-05-20
+confidence: confirmed
 status: active
-surface: triage
-triage_question: Surface to LifeOps as a strategic-risk stream or keep as engineering backlog?
-resolution_path:
-  - surface
-  - defer
-  - suppress
-labels:
-  - TRIAGE
+surface: surface
 jira_space: TFM
 ---
 
@@ -25,12 +18,12 @@ Maintain and repair Talos / Jamf automation capabilities, including Self Service
 
 ## Status
 
-Active by Jira but aging. Some items dormant.
+Active. Some individual items are aging; Self Service+ work appears higher-priority than older repair items.
 
 ## Next action
 
-Decide whether this is Chief Operating Officer (COO)-visible platform-reliability work or should remain engineering backlog. Self Service+ appears higher-priority than older repair items.
+Triage the active item set: prioritize Self Service+ and decide which older repair items are still in scope vs. ready to suppress.
 
 ## Notes
 
-Talos is a revenue-critical automation platform; the project category is strategically important even if individual items are aging.
+Talos is a revenue-critical Managed Service Provider (MSP) automation platform. The Chief Executive Officer (CEO) clarified on 2026-05-20 that this is a routine active project — not a "strategic risk" stream. Earlier triage framing around "surface as risk vs. keep as engineering backlog" has been removed.

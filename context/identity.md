@@ -7,7 +7,7 @@ as_of: 2026-05-19
 confidence: confirmed
 ---
 
-# Chief Executive Officer (CEO) Identity
+# CEO Identity
 
 ## Name and household
 - **Name:** Sean Hansell

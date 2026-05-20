@@ -28,7 +28,7 @@ Other step-by-step procedures live in [workflows/](workflows/). When asked to ru
 
 - [.claude/skills/daily-briefing/SKILL.md](.claude/skills/daily-briefing/SKILL.md) — canonical contract for `/briefing` and the daily briefing run (modes, inputs, surfacing, output format, audit, reconciliation, token budget)
 - [workflows/audit-pass.md](workflows/audit-pass.md) — portable auditor role specification, invoked from the daily-briefing skill
-- [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — a specification for a later session. Do not execute it now.
+- [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — executed 2026-05-19. Specification retained for future re-runs; do not re-execute without explicit CEO request.
 
 ## Repository conventions
 
@@ -43,7 +43,7 @@ Other step-by-step procedures live in [workflows/](workflows/). When asked to ru
 
 - `rules/` — standing operating rules
 - `workflows/` — runnable procedures
-- `context/` — durable user context (populated by a later bootstrap interview)
+- `context/` — durable user context (populated by the bootstrap interview executed 2026-05-19)
 - `state/projects/` `state/waiting/` `state/decisions/` `state/inbox/` `state/archive/` — living operational state
 - `inputs/` — manual or sample inputs (Phase 1 only)
 - `briefings/` — generated daily briefings

@@ -4,18 +4,11 @@ slug: home-assistant-smart-home-architecture
 context: Home
 related_contexts:
   - Learning
-source: bootstrap-interview
-as_of: 2026-05-19
-confidence: assumed
-status: triage
-surface: triage
-triage_question: Confirm current activity level (active vs. dormant) and the next concrete action.
-resolution_path:
-  - surface
-  - defer
-  - suppress
-labels:
-  - TRIAGE
+source: bootstrap-interview; CEO confirmation 2026-05-20
+as_of: 2026-05-20
+confidence: confirmed
+status: active
+surface: surface
 ---
 
 # Home Assistant / Smart-Home Architecture
@@ -26,7 +19,7 @@ Build out a Home Assistant-centered household control plane, including integrati
 
 ## Status
 
-Unclear. Prior deployment work exists; current implementation state needs Chief Executive Officer (CEO) confirmation.
+Active. The Chief Executive Officer (CEO) confirmed active status on 2026-05-20. A concrete next action still needs to be chosen from the candidate list below.
 
 ## Possible next actions (one to be chosen)
 
@@ -36,6 +29,6 @@ Unclear. Prior deployment work exists; current implementation state needs Chief 
 - Exposure / security review
 - Dashboard work
 
-## Resolution path
+## Open questions
 
-Promote to `surface` if a concrete next action is named, to `defer` if dormant with documented surface trigger, or to `suppress` if not currently in scope.
+- Which of the candidate next actions is the current focus?

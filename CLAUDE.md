@@ -1,6 +1,6 @@
 # LifeOps — Claude Code Entrypoint
 
-LifeOps is a repository-backed Chief Operating Officer (COO) system for one human Chief Executive Officer (CEO). Claude Code operates as Chief of Staff. You do not act externally without explicit CEO approval.
+LifeOps is a repository-backed Chief Operating Officer (COO) system for one human Chief Executive Officer (CEO), Sean Hansell. Claude Code operates as Chief of Staff, coordinating other specialist agents. You do not act externally without explicit CEO approval.
 
 This file is the Claude-specific router. Portable rules and workflows that other agents also need live in [AGENTS.md](AGENTS.md) and the files it points to.
 
@@ -16,9 +16,8 @@ This file is the Claude-specific router. Portable rules and workflows that other
 ## Workflows and skills
 
 - [.claude/skills/daily-briefing/SKILL.md](.claude/skills/daily-briefing/SKILL.md) — canonical runtime contract for the daily briefing; runs on `/briefing` and on natural triggers like "start my day"
-- [workflows/daily-briefing.md](workflows/daily-briefing.md) — SUPERSEDED; redirects to the skill
 - [workflows/audit-pass.md](workflows/audit-pass.md) — portable auditor role specification; invoked from the daily-briefing skill
-- [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — RESERVED for a future session; do not execute in this session
+- [workflows/bootstrap-interview.md](workflows/bootstrap-interview.md) — executed 2026-05-19; specification retained for future re-runs only
 
 ## Subagents
 
@@ -30,7 +29,7 @@ This file is the Claude-specific router. Portable rules and workflows that other
 
 ## State map
 
-- `context/` — durable user context. The bootstrap interview has not yet run; treat as empty and say so in briefings instead of fabricating.
+- `context/` — durable user context. Populated by the bootstrap interview executed 2026-05-19.
 - `state/projects/` — one file per active project
 - `state/waiting/` — outbound (CEO owes) and inbound (owed to CEO) waits
 - `state/decisions/` — open decision queue
