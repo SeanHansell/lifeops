@@ -1,8 +1,13 @@
 ---
 type: workflow
 name: bootstrap-interview
-status: SPEC — do not execute in the current session
-invoked_by: explicit Chief Executive Officer (CEO) request in a later session
+status: executed 2026-05-19; spec retained for future re-runs
+invoked_by: explicit Chief Executive Officer (CEO) request
+last_executed: 2026-05-19
+output_artifacts:
+  - proposals/2026-05-19-bootstrap-intake-summary.md
+  - proposals/2026-05-19-bootstrap-normalization-pass.md
+  - proposals/2026-05-19-canonical-file-proposal.md
 ---
 
 # Bootstrap Interview — Specification
