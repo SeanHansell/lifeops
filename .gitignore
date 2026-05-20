@@ -25,3 +25,4 @@ token.json
 # Local Claude Code state that should not be shared
 .claude/local/
 .claude/settings.local.json
+.claude/worktrees/
